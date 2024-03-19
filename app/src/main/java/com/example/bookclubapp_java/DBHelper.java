@@ -32,17 +32,21 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COLUMN_STATUS = "book_status";
 
 
+    //Constructor
     public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
 
+    //Initialise database table creation
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase){
+        //User table
         String CreateUserTable = "CREATE TABLE " + TABLE_USERS +
                 " (" + COLUMN_USERNAME +
                 " TEXT PRIMARY KEY, " +
                 COLUMN_USER_PASSWORD + " TEXT)";
+        //Library table
         String CreateLibraryTable = "CREATE TABLE " + TABLE_LIBRARY +
                 " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_TITLE + " TEXT, " +
@@ -55,6 +59,7 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CreateLibraryTable);
     }
 
+    //Method to add book to the database
     public void addBook(String title, String author, String genre, String ISBN, String status){
         SQLiteDatabase myDB = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -73,6 +78,23 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    //Method to check if the book is in the library(Used for Espresso Testing)
+    public boolean checkBookInLibrary(String title, String author, String genre, String ISBN, String status){
+        SQLiteDatabase myDB = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_LIBRARY +
+                " WHERE " + COLUMN_TITLE +
+                " = ? AND " + COLUMN_AUTHOR +
+                " = ? AND " + COLUMN_GENRE +
+                " = ? AND " + COLUMN_ISBN +
+                " = ? AND " + COLUMN_STATUS +
+                " = ?";
+        Cursor cursor = myDB.rawQuery(query, new String[]{title, author, genre, ISBN, status});
+        Boolean bookExists = cursor.getCount() > 0;
+        cursor.close();
+        return bookExists;
+    }
+
+    //method to display all books
     public Cursor readBookData(){
         String query = "SELECT * FROM " + TABLE_LIBRARY;
         SQLiteDatabase myDB = this.getReadableDatabase();
@@ -125,7 +147,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public boolean checkUser(String username, String password){
         SQLiteDatabase myDB = this.getWritableDatabase();
         Cursor cursor = myDB.rawQuery("select * from " + TABLE_USERS +  " where username=? and password=?", new String[]{username,password});
-        return cursor.getCount() > 0;
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
     }
 
     //Updates the password to a new one if the user has forgotten.
@@ -137,6 +161,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
+    //Method to delete the user from database
     void deleteUser(String username){
         SQLiteDatabase myDB = this.getWritableDatabase();
         long result = myDB.delete(TABLE_USERS, "username=?", new String[]{username});
@@ -165,6 +190,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    //Deletes a row from the library table based on ID number.
     void deleteLibraryData(String row_id){
         SQLiteDatabase myDB = this.getWritableDatabase();
         long result = myDB.delete(TABLE_LIBRARY, "_id=?", new String[]{row_id});
