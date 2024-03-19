@@ -46,6 +46,7 @@ This project is a mobile application developed using Android Studio, it is a pla
 
 
 ##Challenges
+
 One of the first challenges I encountered during the development of my application was updating the books in my database. I would make it as far as the update book activity without the changes made to the books being applied. This was because I was missing the “book” class in my project. The aim of this class was to encapsulate the book attributes and to provide methods to access and modify them in the form of setters and getters. Thanks to this new book class that was added later down the line I was able to update books in the database with ease. This challenge was one of the main reasons I had to take an extension for this project as I truly felt like I hit a brick wall at the time. Thankfully I persevered!
 
 Another challenge I was faced with was displaying the recycler views in the shelves section. I wanted to categorise the books into different recycler views based on their “Status”. The statuses are Read, Reading and want to read. The challenge was figuring out how I could categorise the books into 3 different recycler views without having the books being displayed on all 3. To tackle this challenge I implemented an if statement depending on the status of the book before displaying the data on the recycler view. On each shelf fragment I implement this if statement for all 3 statuses which fixed my problem.
@@ -53,6 +54,7 @@ Another challenge I was faced with was displaying the recycler views in the shel
 Another challenge I encountered was implementing a functional search view for the search fragment. That aim of this search view was to display all the books stored in the database in a list and to be able to search the list and filter by Title characters. To address this issue I used the same method to display the books I used on the shelves fragment without the status filter. This meant that all books would be displayed no matter the status. Implementing the search view was a bigger challenge because I had to implement a new method in my DBHelper that allows for searching the library database based on a partial match of the title.
 
 ##Acknowledgements
+
 Special thanks to ‘N’ for drawing the custom logo and app icon. Also known as “little fella”. Thank you for being there for me since day 1.
 
 ##References
