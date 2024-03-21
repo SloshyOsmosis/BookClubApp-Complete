@@ -21,11 +21,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     private final ArrayList<Book> books;
     private final Activity activity;
     private Fragment searchFragment;
+    //Constructor
     CustomAdapter(Activity activity, ArrayList<Book> books){
         this.activity = activity;
         this.context = activity.getApplicationContext();
         this.books = books;
     }
+
+    //Inflates the layout file for the items in the RecyclerView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,6 +41,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.searchFragment = fragment;
     }
 
+    //Binds the data from the database to the items in the RecyclerView.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         Book addedBook = books.get(position);
@@ -46,6 +50,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         holder.bookGenreText.setText(addedBook.getGenre());
         holder.bookISBNText.setText(addedBook.getIsbn());
         holder.bookStatusText.setText(addedBook.getStatus());
+
+        //Sets an onclick listener for the book items.
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,19 +70,20 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         });
     }
 
+    //
     @Override
     public int getItemCount() {
         return books.size();
     }
 
 
-
+    //Class to hold the views for each item in the RecyclerView.
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-
         TextView bookIdText, bookTitleText, bookAuthorText, bookGenreText, bookISBNText, bookStatusText;
         CardView mainLayout;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            //Initialise the views
             bookIdText = itemView.findViewById(R.id.bookIdText);
             bookTitleText = itemView.findViewById(R.id.bookTitleText);
             bookAuthorText = itemView.findViewById(R.id.bookAuthorText);

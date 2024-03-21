@@ -56,6 +56,7 @@ public class ProfileFragment extends Fragment {
         }
 
         registerResult();
+        //Changes the profile picture from the users image gallery.
         changePFP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +101,7 @@ public class ProfileFragment extends Fragment {
                 }
         );
     }
+    //Shows a confirmation dialog before account deletion
     void confirmDeleteDialog(){
         String userName = new DBHelper(getContext()).getUserName();
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -111,6 +113,7 @@ public class ProfileFragment extends Fragment {
                 DBHelper myDB = new DBHelper(getContext());
                 myDB.deleteUser(String.valueOf(userName));
 
+                //Redirects the user to the main activity once the user has been deleted
                 Intent intent = new Intent(requireContext(), MainActivity.class);
                 startActivity(intent);
                 Toast.makeText(getContext(), "User has been deleted.", Toast.LENGTH_SHORT).show();
@@ -119,7 +122,7 @@ public class ProfileFragment extends Fragment {
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                //Does nothing if no is clicked.
             }
         });
         builder.create().show();

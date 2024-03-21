@@ -8,6 +8,7 @@ public class Book {
     private String ISBN;
     private String status;
 
+    //Constructor.
     public Book(int id, String title, String author, String genre, String ISBN, String status){
         this.id = String.valueOf(id);
         this.title = String.valueOf(title);
@@ -16,6 +17,7 @@ public class Book {
         this.ISBN = String.valueOf(ISBN);
         this.status = String.valueOf(status);
     }
+    //Setting getters and setters.
     public String getId() {
         return id;
     }
@@ -63,6 +65,7 @@ public class Book {
         this.status = status;
     }
 
+    //toString method to provide a string representation of the book object.
     @Override
     public String toString() {
         return "LibraryBook(" + "id = " + id + ", title = " + title + ", author = " + author + ", genre = " + genre + ", ISBN = " + ISBN + ", status = " + status +")";

@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         etPass = findViewById(R.id.password);
         goToReg = findViewById(R.id.goToRegister);
         forgot = findViewById(R.id.forgPassword);
+
+        //Starts registration activity.
         goToReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
+                //Checks if the user is registered to the database, if a matching user is found they will be directed to the ActivityUser class.
                 boolean isLogged = dbHelper.checkUser(etUserName.getText().toString().trim(), etPass.getText().toString().trim());
                 if(isLogged){
                     Intent intent = new Intent(MainActivity.this, ActivityUser.class);

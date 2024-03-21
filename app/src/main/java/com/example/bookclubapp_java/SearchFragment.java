@@ -1,25 +1,17 @@
 package com.example.bookclubapp_java;
 
-import android.app.Activity;
-import android.content.ClipData;
-import android.database.Cursor;
-import android.media.RouteListingPreference;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.SearchView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 
 public class SearchFragment extends Fragment {
@@ -42,8 +34,10 @@ public class SearchFragment extends Fragment {
         customAdapter = new CustomAdapter(getActivity(), books);
         customAdapter.setSearchFragment(this);
 
+        //Initialise DBHelper.
         myDB = new DBHelper(requireContext());
 
+        //Retrieves all the books with an empty search string.
         retrieveAllBooks("");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -53,6 +47,7 @@ public class SearchFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                //Filter the list based on the new text from the user.
                 filterList(newText);
                 return true;
             }

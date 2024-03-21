@@ -3,12 +3,8 @@ package com.example.bookclubapp_java;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -26,11 +22,13 @@ public class ActivityUser extends AppCompatActivity {
         setContentView(R.layout.activity_user);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        //Default fragment that is loaded is the home fragment.
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                //Switch fragments based on the selected icon, Had too many issues with viewbinder in the past...
                 switch (menuItem.getItemId()){
                     case R.id.home:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
