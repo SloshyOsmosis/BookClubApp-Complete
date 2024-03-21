@@ -1,9 +1,14 @@
 This is the ReadMe file for my Book Club App created in Android Studio.
 
 DISCLAIMER – This application was developed in Android Studio Jellyfish using a Kotlin Gradle. May be out of date for older Android Studio builds!
+
 TargetSDK/CompileSDK – 34
+
 Gradle Version – 8.6
+
 Android Gradle Plugin Version – 8.4.0-alpha12 (got too far into the project to change(sorry))
+
+To view changes such as adding book/updating book, please refresh the screen by leaving and coming back to the page to see the changes.
 
 ##Overview
 This project is a mobile application developed using Android Studio, it is a platform for users to upload and categorise their books based on whether they are reading, finished reading and want to read.
