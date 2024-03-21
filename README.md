@@ -10,6 +10,8 @@ Android Gradle Plugin Version – 8.4.0-alpha12 (got too far into the project to c
 
 To view changes such as adding book/updating book, please refresh the screen by leaving and coming back to the page to see the changes.
 
+APK KEY/PASSWORD -- password
+
 ##Overview
 This project is a mobile application developed using Android Studio, it is a platform for users to upload and categorise their books based on whether they are reading, finished reading and want to read.
 
