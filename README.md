@@ -1,12 +1,12 @@
 This is the ReadMe file for my Book Club App created in Android Studio.
 
-DISCLAIMER ñ This application was developed in Android Studio Jellyfish using a Kotlin Gradle. May be out of date for older Android Studio builds!
+DISCLAIMER ‚Äì This application was developed in Android Studio Jellyfish using a Kotlin Gradle. May be out of date for older Android Studio builds!
 
-TargetSDK/CompileSDK ñ 34
+TargetSDK/CompileSDK ‚Äì 34
 
-Gradle Version ñ 8.6
+Gradle Version ‚Äì 8.6
 
-Android Gradle Plugin Version ñ 8.4.0-alpha12 (got too far into the project to change(sorry))
+Android Gradle Plugin Version ‚Äì 8.4.0-alpha12 (got too far into the project to change(sorry))
 
 To view changes such as adding book/updating book, please refresh the screen by leaving and coming back to the page to see the changes.
 
@@ -17,7 +17,7 @@ This project is a mobile application developed using Android Studio, it is a pla
 
 ##Features
 1. Users can create accounts and login, with the option to delete their account and update password.
-2. Users have access to the ìshelvesî page. Here they can categorise their books as they wish based on reading or want to read.
+2. Users have access to the ‚Äúshelves‚Äù page. Here they can categorise their books as they wish based on reading or want to read.
 3. Search page allows the users to filter through their submitted books with a search bar.
 4. Profile customisation such as the ability to change profile picture to stand out.
 5. The ability to delete books from their lists.
@@ -54,21 +54,22 @@ This project is a mobile application developed using Android Studio, it is a pla
 
 ##Challenges
 
-One of the first challenges I encountered during the development of my application was updating the books in my database. I would make it as far as the update book activity without the changes made to the books being applied. This was because I was missing the ìbookî class in my project. The aim of this class was to encapsulate the book attributes and to provide methods to access and modify them in the form of setters and getters. Thanks to this new book class that was added later down the line I was able to update books in the database with ease. This challenge was one of the main reasons I had to take an extension for this project as I truly felt like I hit a brick wall at the time. Thankfully I persevered!
+One of the first challenges I encountered during the development of my application was updating the books in my database. I would make it as far as the update book activity without the changes made to the books being applied. This was because I was missing the ‚Äúbook‚Äù class in my project. The aim of this class was to encapsulate the book attributes and to provide methods to access and modify them in the form of setters and getters. Thanks to this new book class that was added later down the line I was able to update books in the database with ease. This challenge was one of the main reasons I had to take an extension for this project as I truly felt like I hit a brick wall at the time. Thankfully I persevered!
 
-Another challenge I was faced with was displaying the recycler views in the shelves section. I wanted to categorise the books into different recycler views based on their ìStatusî. The statuses are Read, Reading and want to read. The challenge was figuring out how I could categorise the books into 3 different recycler views without having the books being displayed on all 3. To tackle this challenge I implemented an if statement depending on the status of the book before displaying the data on the recycler view. On each shelf fragment I implement this if statement for all 3 statuses which fixed my problem.
+Another challenge I was faced with was displaying the recycler views in the shelves section. I wanted to categorise the books into different recycler views based on their ‚ÄúStatus‚Äù. The statuses are Read, Reading and want to read. The challenge was figuring out how I could categorise the books into 3 different recycler views without having the books being displayed on all 3. To tackle this challenge I implemented an if statement depending on the status of the book before displaying the data on the recycler view. On each shelf fragment I implement this if statement for all 3 statuses which fixed my problem.
 
 Another challenge I encountered was implementing a functional search view for the search fragment. That aim of this search view was to display all the books stored in the database in a list and to be able to search the list and filter by Title characters. To address this issue I used the same method to display the books I used on the shelves fragment without the status filter. This meant that all books would be displayed no matter the status. Implementing the search view was a bigger challenge because I had to implement a new method in my DBHelper that allows for searching the library database based on a partial match of the title.
 
 ##Acknowledgements
 
-Special thanks to ëNí for drawing the custom logo and app icon. Also known as ìlittle fellaî. Thank you for being there for me since day 1.
+Special thanks to ‚ÄòN‚Äô for drawing the custom logo and app icon. Also known as ‚Äúlittle fella‚Äù. Thank you for being there for me since day 1.
 
 ##References
 
 Icons - https://www.flaticon.com/
 
 GfG. (2022, August 17). SearchView in Android with RecyclerView. GeeksforGeeks. https://www.geeksforgeeks.org/searchview-in-android-with-recyclerview/
+
 How to Read Data from SQLite Database in Android? - GeeksforGeeks. (n.d.). https://www.geeksforgeeks.org/how-to-read-data-from-sqlite-database-in-android/amp/
 
 
